@@ -45,4 +45,4 @@ it_built_system_NAS : NAS principal (netapp, ATTO, Brocade) sans les extensions
 it_built_system_storage_analytics_by_rack : regroupement des systems storage (System 2-en-1 avec chassis + server) classé par rack
 it_build_system_EXADATA: regroupement des equipements avec comme fabricant Oracle
 it_build_system_HPC : regroupement des equipements HPC, une ligne par FERME (même s'ils sont plusieurs par rack/salle en vrai) pour ratacher les fermes sans status 
-a
+it_build_system_HANA : regroupement des equipements HANA (soit avec le nom/nom de baie : hana), une ligne par rack oú le status n'est pas null
