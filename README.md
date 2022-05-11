@@ -5,7 +5,14 @@ STATUS :
 d'assets avec les 3 derniers caracteres en moins. Exemple : IT_equipment.nom = SU941, assets.nom_court = SU941AOS
 4/OK-POSITION : Position entre asset.DALLE et IT_equipment.REPERAGE_ID qui match
 5/ NOM DU FABRICANT : ASSET_ID : Regroupe les NAS et leur extension lorsqu'ils sont dans le même Rack (NetAPP)
-
+6/ 'CMDB-OK-OLD' : equipments avec l'extension _OLD/-OLD dans la CMDB mais pas dans IT_Equipment
+7/ 'MISMATCH_TIRET' : equipments avec un tiret manquant et/ou différents entre les deux bases
+8/ FEX : ASSET_ID : Regroupe les FEX et ses extensions même s'ils ne sont pas dans le meme rack
+ 9/
+  1. EXADATA : No match 
+  2. Netapp : No match
+  3. PCP : No Match
+10 / HDS : [asset_id sur la base CMDB] sinon 'No match' : regroupement des equipments HDS / Hitachi en se basant sur les 5 premiers charactères 
 
 
 --- PROBLEME
@@ -46,3 +53,7 @@ it_built_system_storage_analytics_by_rack : regroupement des systems storage (Sy
 it_build_system_EXADATA: regroupement des equipements avec comme fabricant Oracle
 it_build_system_HPC : regroupement des equipements HPC, une ligne par FERME (même s'ils sont plusieurs par rack/salle en vrai) pour ratacher les fermes sans status 
 it_build_system_HANA : regroupement des equipements HANA (soit avec le nom/nom de baie : hana), une ligne par rack oú le status n'est pas null
+it_build_system_RING : regroupement des equipements "NA9TCR" avec un status non null, une ligne par rack
+IT_Equipment_OLD : regroupement des equipements qui match avec equipements 'XXX_OLD' de la table `asset_new` et représente les equipements qui ne doivent pas être la mais qui y sont quand meme
+IT_Equipment_FEX: regroupement des equipements cisco de type switch qui disposent d'extension mais pas forcement dans le meme rack, ex : SWC3PC27-FEX105 est rattache à l'equipement SWC3PC27
+IT_Equipment_cleaning_Hitachi : regroupement et nettoyage des noms correspondants au fabricant Hitachi avec de faciliter la jointure et reduire la taille de la query 
