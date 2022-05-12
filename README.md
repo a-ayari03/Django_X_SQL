@@ -13,6 +13,8 @@ d'assets avec les 3 derniers caracteres en moins. Exemple : IT_equipment.nom = S
   2. Netapp : No match
   3. PCP : No Match
 10 / HDS : [asset_id sur la base CMDB] sinon 'No match' : regroupement des equipments HDS / Hitachi en se basant sur les 5 premiers charactères 
+11 / MATCH-POSITION : nombre de match par position entre IT_equipment et la CMDB non filtree
+12 / MATCH-CMDB : HORS Status Install : Si aucun status et qu'il y a match enetre les noms et/ou position sur la cmdb non filtrée
 
 
 --- PROBLEME
@@ -57,3 +59,7 @@ it_build_system_RING : regroupement des equipements "NA9TCR" avec un status non 
 IT_Equipment_OLD : regroupement des equipements qui match avec equipements 'XXX_OLD' de la table `asset_new` et représente les equipements qui ne doivent pas être la mais qui y sont quand meme
 IT_Equipment_FEX: regroupement des equipements cisco de type switch qui disposent d'extension mais pas forcement dans le meme rack, ex : SWC3PC27-FEX105 est rattache à l'equipement SWC3PC27
 IT_Equipment_cleaning_Hitachi : regroupement et nettoyage des noms correspondants au fabricant Hitachi avec de faciliter la jointure et reduire la taille de la query 
+it_equipment_all_retired_asset : regroupement des matchs de position et/ou nom entre IT_equipment et la cmdb filtré avec un status Etat = 'Retired'
+IT_Equipment_match_position_reduced : Version condensée de IT_Equipment + jointure avec asset_new uniquement sur la position
+IT_Equipment_match_position : Regroupement de tous les matchs de position et/ou nom entre IT_equipment sans filtre avec rajout du nombre de match par equipment : Exemple, nom = CH002 correspond à une seule ligne sur IT_Equipment mais à 32 lignes sur Asset = 32 lignes générés avec toutes les infos essentielles
+IT_Equipment_match_no_proliant_c7000 : Regroupement de tous les matchs de position et/ou nom entre IT_equipment sans filtre où le status est nulle (rajout du status MATCH-CMDB : HORS Status Install)
