@@ -1,9 +1,9 @@
 ## Version
 
-V1 : It_equipment -- 26/04/2022
-V2 : It_equipment -- 14/05/2022
-V3 : Olivier_it  - 23/05/2022
-V4 : It_equipment -- 31/05/2022
+V1 : It_equipment
+V2 : It_equipment
+V3 : Olivier_it
+V4 : It_equipment
 
 ___
 
@@ -33,21 +33,20 @@ Status inspiré d'olivier_it, lorsque `STATUS` est non null, alors `status_3` = 
 On cherche tous les OK-position:1 et on rajoute dans la colonne `ASSET_ID_OK_POSITION` l'asset id correspondant dans la CMDB
 
 
-## AUDIT  du 23/05/2022
- 
+AUDIT :
+12. Mise à jour des notes et création de colonne qui référence l'équipement de la CMDB
+1.1 Patch_Panel : Equipments du type Patch Panel
+1.2 Linked_equipment : On fait le lien entre la cmdb et notes associées à une audit, généralement le bon asset_id est référencé dans la colonne asset_id_to_add
 
- 1. Mise à jour des notes et création de colonne qui référence l'équipement de la CMDB
-	 2. Patch_Panel : Equipments du type Patch Panel
-	 3. Linked_equipment : On fait le lien entre la cmdb et notes associées à une audit, généralement le bon asset_id est référencé dans la colonne asset_id_to_add
+13. Ajout d'une nouvelle colonne. On essaye de retracer pour quelle raison il n'y a pas eu de match initialement
+2.1 OK-Position : Si le status ok:position existe c'est qu'il y a plusieurs match sur une seule position. Impossible de faire le choix sans controle des bases et/ou controle physique
+2.2 Wrong position : Oublie de position / mauvaise position renseigné = Recherche manuel de l'asset-id et de l'équipement
+2.3 Wrong Salle  : Mauvaise salle ou salle avec extension dans la CMDB
 
- 2. Ajout d'une nouvelle colonne `Défaut`. On essaye de retracer pour quelle raison il n'y a pas eu de match initialement
-	 1. OK-Position : Si le status ok:position existe c'est qu'il y a plusieurs match sur une seule position. Impossible de faire le choix sans controle des bases et/ou controle physique
-	 2. Wrong position : Oublie de position / mauvaise position renseigné = Recherche manuel de l'asset-id et de l'équipement
-	 3. Wrong Salle  : Mauvaise salle ou salle avec extension dans la CMDB
+
 
 -------
-
-### VIEWS :
+VIEWS :
 it_built_system_NAS : NAS principal (netapp, ATTO, Brocade) sans les extensions
 it_built_system_storage_analytics_by_rack : regroupement des systems storage (System 2-en-1 avec chassis + server) classé par rack
 it_build_system_EXADATA: regroupement des equipements avec comme fabricant Oracle
