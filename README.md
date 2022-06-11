@@ -4,11 +4,13 @@ V1 : It_equipment -- 26/04/2022
 V2 : It_equipment -- 14/05/2022
 V3 : Olivier_it  - 23/05/2022
 V4 : It_equipment -- 31/05/2022
+V5 : Modification des status sur Olivier_it afin d'ajouter un status global -- 11/06/2022
 
 ___
+## STATUS olivier_it
+1. 
 
-
-## STATUS
+## STATUS it_equipments
  1. OK-CMDB-ASSET-ID : Match entre les assets_id des tables : assets / IT_equipment
  2. /!\ Asset_ID affiché : Seulement pour les serveurs, match entre les noms courts de IT_equipment et celui 
 d'assets avec les 3 derniers caracteres en moins. Exemple : IT_equipment.nom = SU941, assets.nom_court = SU941AOS

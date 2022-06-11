@@ -1,0 +1,20 @@
+DROP TABLE IF EXISTS `olivier_it`;
+CREATE TABLE `olivier_it` (
+  `modele` varchar(255) DEFAULT NULL,
+  `Type` varchar(100) NOT NULL,
+  `fabricant` varchar(255) DEFAULT NULL,
+  `nom` varchar(255) DEFAULT NULL,
+  `SHORT_NAME` varchar(100) NOT NULL,
+  `SERIAL_NUMBER` varchar(100) NOT NULL,
+  `ASSET_ID` varchar(100) NOT NULL,
+  `ASSET_TAG` varchar(100) NOT NULL,
+  `Asset_Number` varchar(100) NOT NULL,
+  `Nom_de_la_salle` varchar(255) DEFAULT NULL,
+  `reperage_id` varchar(255) DEFAULT NULL,
+  `Taille_U` varchar(100) NOT NULL,
+  `End_Move_Target` varchar(100) NOT NULL,
+  `Salle_Dest` varchar(100) NOT NULL,
+  `Rack_U_Dest` varchar(100) NOT NULL,
+  `olivier_index` varchar(100) NOT NULL,
+  `PROJET_Responsable` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
