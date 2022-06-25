@@ -84,7 +84,7 @@ Plusieurs attributs sont ainsi générés :
 
 
 # 2/ Equipment_move_workflow.ipynb 
-Workflow permettant la mise à jour de la table `IT_equipments_unique_equipments`.
+Workflow permettant la mise à jour de la table `IT_equipments_unique_equipments` et la création d'indicateur permettant de tracker le nombre d'equipments et de déplacements par salle
 
 `IT_Equipment_unique_records` : table regroupant tous les asset_id unique, une ligne par equipments avec tous les attribus prédifinis auquel on rajoute : 
     
@@ -95,3 +95,17 @@ Workflow permettant la mise à jour de la table `IT_equipments_unique_equipments
     - Clean date : Si un equipment est jugé clean, la date du dernier ajout est affiché 
 
 
+`indicateur_equipment_per_salle` : Suit le nombre d'equipment unique par salle
+
+     - first_occurence : nb d'equipement dans la première occurence
+     - last_occurence : nb d'equipement dans la dernière occurence
+     - in_equipment : nb d'equipement entrée
+     - out_equipment : nb d'equipement sortie
+    
+    
+MàJ 25/06/2022 : 
+Liste de fichier provenant du workflow equipment_move_workflow et permettant de mettre en lumière certains problèmes : 
+
+    - **query_meme_nom_resultat_diff.csv** : comparaisons des equipments entre le 04/02/22 et le 17/06/2022 qui ont des noms similaires et des asset_id ou id_systeme_asset différent (sensé être unique et propre à chaque equipment
+    - **IT_Equipment_move_salle_name_match.csv** : comparaisons des equipments entre le 04/02/22 et le 17/06/2022 qui ont des noms similaires **ET UNIQUE** . Permet d'observer les déplacements entre les salles
+    - **IT_Equipment_non_unique_nom.csv** : comparaisons des equipments du 17/06/22 ayant des noms non unique
