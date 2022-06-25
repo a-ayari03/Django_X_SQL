@@ -18,6 +18,7 @@ Le dossier contient la présence de 2 workflows :
 2. Lancement du script `Query_launcher.py` afin de mettre à jour la base de données IT_equipement et initialiser le workflow Equipment_move_workflow. Seul les fichiers csv contenus dans le dossier **Downloads/historique*** serviront au fonctionnement du workflow.
 
 >  cd Downloads/
+
 > python3 Query_launcher.py
 
 3. Une fois la mise à jour effectuée, les fichiers csv seront transférés sous le dossier ***Downloads/historique***. Un fichier exporté contenant tous les traitements sera crée sous le dossier ***Downloads/resultat***.
@@ -25,6 +26,7 @@ Le dossier contient la présence de 2 workflows :
 4. Lancement du script `Update_It_equipment_records.py` afin de mettre à jour les bases de données et initialiser le workflow Olivier_it_Workflow
 	
 >  cd Downloads/
+
 > python3 Update_It_equipment_records.py
 
 
@@ -88,7 +90,7 @@ Workflow permettant la mise à jour de la table `IT_equipments_unique_equipments
     
     - First_occurence : première d'ajout d'un fichier
     - last_move_date : date du dernier changement de position
-    - last_move_date : dernier changement de position
+    - last_move : dernier changement de position
     - last_move_salle : Salle du dernier changement de position
     - Clean date : Si un equipment est jugé clean, la date du dernier ajout est affiché 
 
