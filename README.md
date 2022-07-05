@@ -17,6 +17,7 @@ Le dossier contient la présence de 2 workflows :
 
 2. Lancement du script `Query_launcher.py` afin de mettre à jour la base de données IT_equipement et initialiser le workflow Equipment_move_workflow. Seul les fichiers csv contenus dans le dossier **Downloads/historique*** serviront au fonctionnement du workflow.
 
+
 >  cd Downloads/
 
 > python3 Query_launcher.py
@@ -29,7 +30,10 @@ Le dossier contient la présence de 2 workflows :
 
 > python3 Update_It_equipment_records.py
 
-
+5. Lancement des scripts spécifiques (en cours de construction) :
+    - Olivier_it_only_index_launcher.ipynb
+    - Vision_spatial_launcher.ipynb
+    
 # 1/ Olivier_it_Workflow 
 
 Le workflow repose sur la mise à jour des fichiers csv IT_equipments, Assets_new (CMDB) ainsi que Olivier_it afin de constater les écarts entre les différentes base de données.
@@ -101,11 +105,30 @@ Workflow permettant la mise à jour de la table `IT_equipments_unique_equipments
      - last_occurence : nb d'equipement dans la dernière occurence
      - in_equipment : nb d'equipement entrée
      - out_equipment : nb d'equipement sortie
+
+Liste des fichiers en sortie : 
     
+    - IT_Equipment_unique_records : table avec les équipements unique
+
     
-MàJ 25/06/2022 : 
+# 3/ Vision_spatial
+Le workflow propose une série de query visant à comparer les résultats de la base de donnée Olivier_it par rapport aux bases 6Sigma et/ou CMDB afin de constater les différences entre les trois principales bases.
+Vérification de la présence des equipements Olivier_it simultanément sur 6Sigma et sur la CMDB :
+
+    - Controle de l'asset_id
+    - Controle de Position 
+    - listes des équipements de 6Sigma et CMDB non présent sur Olivier_it (olivier_it_eq_not_in_6sigma.csv, olivier_it_eq_not_in_cmdb.csv)
+
+liste des fichiers en sortie : 
+
+    - **olivier_it_vision_spatial_date_du_jour_resultat.csv** : Fichier contenant le traitement du workflow
+    - **olivier_it_eq_not_in_6sigma.csv** : Liste des équipements 6sigma non présent sur Olivier_it
+    - **olivier_it_eq_not_in_CMDB.csv** : Liste des équipements CMDB non présent sur Olivier_it
+
+MàJ 06/07/2022 : 
 Liste de fichier provenant du workflow equipment_move_workflow et permettant de mettre en lumière certains problèmes : 
 
     - **query_meme_nom_resultat_diff.csv** : comparaisons des equipments entre le 04/02/22 et le 17/06/2022 qui ont des noms similaires et des asset_id ou id_systeme_asset différent (sensé être unique et propre à chaque equipment
     - **IT_Equipment_move_salle_name_match.csv** : comparaisons des equipments entre le 04/02/22 et le 17/06/2022 qui ont des noms similaires **ET UNIQUE** . Permet d'observer les déplacements entre les salles
     - **IT_Equipment_non_unique_nom.csv** : comparaisons des equipments du 17/06/22 ayant des noms non unique
+    - `IT_Equipment_move_no_asset` : Si un id_systeme_asset n'est pas dispo dans le dernier fichier csv on procède à un check des noms. S'il y a concordence des noms dans le dernier fichier c'est que id_systeme_asset a été modifié. Les deux positions sont ainsi affichées.
