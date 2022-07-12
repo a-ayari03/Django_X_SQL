@@ -1,7 +1,7 @@
 
-Le dossier contient la présence de 2 workflows :
+Le dossier contient la présence de 3 workflows :
 
-    1/ Olivier_it_Workflow.ipynb : mise à jour des tables relatifs à la CMDB, IT_equipments et Olivier_IT
+    1/ Olivier_it_Workflow.ipynb : mise à jour des tables relatifs à la CMDB, IT_equipments et Olivier_IT. 
     2/ Equipment_move_workflow.ipynb : mise à jour des equipments de la table IT_equipments. Taracking des déplacements d'équipements
  
  Le fonctionnement des workflows est assurés par la présence de fichier dans ses 4 dossiers : 
