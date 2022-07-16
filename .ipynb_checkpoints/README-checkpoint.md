@@ -109,6 +109,8 @@ Workflow permettant la mise à jour de la table `IT_equipments_unique_equipments
 Liste des fichiers en sortie : 
     
     - IT_Equipment_unique_records : table avec les équipements unique
+    - indicator_it_equipment_count_per_salle : résumé du nombre d'equipment par salle et par mois
+    - indicator_it_equipment_count_per_type_per_salle : résumé du nombre d'equipment par salle, type et par mois
 
     
 # 3/ Vision_spatial
