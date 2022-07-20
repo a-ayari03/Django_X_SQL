@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Django CRUD Operations</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+</head>
+<body>
+<div class="container">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>month</th>
+		<th>type</th>
+		<th>Total</th>
+		<th>P1_P2</th>
+		<th>P3_P4</th>
+		<th>P1</th>
+		<th>P2</th>
+		<th>P3</th>
+		<th>P4</th>
+      </tr>
+    </thead>
+    <tbody>
+	{% for row in indicator_rooms %}  
+      <tr>
+        <th>{{row.Month_name}}</th>
+		<th>{{row.Type}}</th>
+		<th>{{row.Total}}</th>
+		<th>{{row.P1_P2}}</th>
+		<th>{{row.P3_P4}}</th>
+		<th>{{row.P1}}</th>
+		<th>{{row.P2}}</th>
+		<th>{{row.P3}}</th>
+		<th>{{row.P4}}</th>
+      </tr>
+	  {% endfor %} 
+	</tbody>
+</table>	
+</div>
+</body>
+</html>
