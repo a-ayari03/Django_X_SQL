@@ -133,16 +133,29 @@ Workflow permettant la mise à jour de la table `IT_equipments_unique_equipments
     - Clean date : Si un equipment est jugé clean, la date du dernier ajout est affiché 
 
 
-`indicateur_equipment_per_salle` : Suit le nombre d'equipment unique par salle
+`indicator_it_equipment_count_per_salle` : résumé du nombre d'equipment par salle et par mois
 
-     - first_occurence : nb d'equipement dans la première occurence
-     - last_occurence : nb d'equipement dans la dernière occurence
-     - in_equipment : nb d'equipement entrée
-     - out_equipment : nb d'equipement sortie
+     - P1_P2: sommes des équipements dans les salles P1 et P2
+     - P3_P4: sommes des équipements dans les salles P3 et P4
+     - P1: nb d'equipement P1
+     - P2: nb d'equipement P2
+     - P3: nb d'equipement P3
+     - P4: nb d'equipement P4
+
+`indicator_it_equipment_count_per_type_per_salle` : résumé du nombre d'equipment par salle, type et par mois
+
+     - P1_P2: sommes des équipements dans les salles P1 et P2
+     - P3_P4: sommes des équipements dans les salles P3 et P4
+     - P1: nb d'equipement P1
+     - P2: nb d'equipement P2
+     - P3: nb d'equipement P3
+     - P4: nb d'equipement P4
 
 Liste des fichiers en sortie : 
     
     - IT_Equipment_unique_records : table avec les équipements unique
+    - indicator_it_equipment_count_per_salle
+    - indicator_it_equipment_count_per_type_per_salle
 
 
 
