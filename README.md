@@ -1,4 +1,5 @@
 
+
 MàJ 12/07/2022 
 Le dossier contient la présence de 3 workflows :
 
@@ -32,7 +33,15 @@ Le dossier contient la présence de 3 workflows :
 
 > python3 Update_It_equipment_records.py
 
-5. Lancement des scripts spécifiques (en cours de construction, non obligatoire) :
+5. Execution du script `export_csv.py` permettant d'enregistrer au format csv n'importe quel table disponible dans la database :
+
+> cd Downloads/
+
+> python3 export_csv.py <nom_de_la_table>
+
+Un fichier exporté contenant tous les traitements sera crée sous le dossier **Downloads/resultat/année_mois_jour/<nom_de_la_table>**
+
+6. Lancement des scripts spécifiques (en cours de construction, non obligatoire) :
     - Olivier_it_only_index_launcher.ipynb
     - Vision_spatial_launcher.ipynb
     
