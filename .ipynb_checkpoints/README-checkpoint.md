@@ -154,8 +154,8 @@ Workflow permettant la mise à jour de la table `IT_equipments_unique_equipments
 Liste des fichiers en sortie : 
     
     - IT_Equipment_unique_records : table avec les équipements unique
-    - indicator_it_equipment_count_per_salle
-    - indicator_it_equipment_count_per_type_per_salle
+    - indicator_it_equipment_count_per_salle (http://127.0.0.1:8000/show_indicator_room/)
+    - indicator_it_equipment_count_per_type_per_salle (http://127.0.0.1:8000/show_indicator_type_room/)
 
 
 
