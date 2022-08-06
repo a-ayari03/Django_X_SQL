@@ -1,13 +1,22 @@
 
 
-MàJ 12/07/2022 
-Le dossier contient la présence de 3 workflows :
+
+MàJ 06/08/2022 
+Le dossier contient la présence de 4 workflows :
 
     1/ Olivier_it_Workflow.ipynb : mise à jour des tables relatifs à la CMDB, IT_equipments et Olivier_IT. Série de traitement permettant de déterminer les équipements bien localisés et ceux qui présentent des anomalies
     2/ Vision_spatial.ipynb  : Ajout des equipements manquants à Olivier_it
     3/ Equipment_move_workflow.ipynb : mise à jour des equipments de la table IT_equipments. Taracking des déplacements d'équipements
+    4/ Simulateur_espace.ipynb : Simule l'espace disponible et identifie les slot vides sur chacun des racks afin de permettre une projection des équipes dans le déplacement du matériel.
     
+# Liste des fichiers en sortie : 
+    
+    - IT_Equipment_unique_records : table avec les équipements unique
+    - indicator_it_equipment_count_per_salle (http://127.0.0.1:8000/show_indicator_room/)
+    - indicator_it_equipment_count_per_type_per_salle (http://127.0.0.1:8000/show_indicator_type_room/)
+    - indicator_it_equipment_simulateur_espace (http://127.0.0.1:8000/show_simulateur_espace/)
  
+
  Le fonctionnement des workflows est assurés par la présence de fichier dans ses 4 dossiers : 
 	 - Downloads/ : Présence des scripts permettant le bon fonctionnement des workflows
 	 - Downloads/raw_file : Présence des **fichiers csv permettant la mise à jour des bases de données**
@@ -33,7 +42,12 @@ Le dossier contient la présence de 3 workflows :
 
 > python3 Update_It_equipment_records.py
 
-5. Execution du script `export_csv.py` permettant d'enregistrer au format csv n'importe quel table disponible dans la database :
+5. Execution du script `Update_simulateur_spatial.py` afin de mettre à jour la simulation de l'espace disponible dans les racks
+>  cd Downloads/
+
+> python3 Update_simulateur_spatial.py
+
+7. Execution du script `export_csv.py` permettant d'enregistrer au format csv n'importe quel table disponible dans la database :
 
 > cd Downloads/
 
@@ -41,7 +55,7 @@ Le dossier contient la présence de 3 workflows :
 
 Un fichier exporté contenant tous les traitements sera crée sous le dossier **Downloads/resultat/année_mois_jour/<nom_de_la_table>**
 
-6. Lancement des scripts spécifiques (en cours de construction, non obligatoire) :
+7. Lancement des scripts spécifiques (en cours de construction, non obligatoire) :
     - Olivier_it_only_index_launcher.ipynb
     - Vision_spatial_launcher.ipynb
     
@@ -151,11 +165,16 @@ Workflow permettant la mise à jour de la table `IT_equipments_unique_equipments
      - P3: nb d'equipement P3
      - P4: nb d'equipement P4
 
-Liste des fichiers en sortie : 
-    
-    - IT_Equipment_unique_records : table avec les équipements unique
-    - indicator_it_equipment_count_per_salle (http://127.0.0.1:8000/show_indicator_room/)
-    - indicator_it_equipment_count_per_type_per_salle (http://127.0.0.1:8000/show_indicator_type_room/)
+# 3/ Simulateur_espace.ipynb
+Ce workflow a pour but de simuler l'espace disponible sur chacun des racks afin de permettre une projection des équipes dans le déplacement du matériel.
+
+`indicator_it_equipment_simulateur_espace `: indicateur de l'espace disponible pour tous lers rack par rapport à la somme des hauteurs de chaque equipment renseigné sur la CMDB
+
+		- rack capacity : nombre de slot disponble par rack (par défaut 45)
+		- quantity slot occupied : nombre de slot utilisé
+		- quantity available occupied : nombre de slot disponible
+		- available slot : position des slots disponible
+
 
 
 
