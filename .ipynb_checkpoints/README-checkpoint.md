@@ -9,12 +9,13 @@ Le dossier contient la présence de 4 workflows :
     3/ Equipment_move_workflow.ipynb : mise à jour des equipments de la table IT_equipments. Taracking des déplacements d'équipements
     4/ Simulateur_espace.ipynb : Simule l'espace disponible et identifie les slot vides sur chacun des racks afin de permettre une projection des équipes dans le déplacement du matériel.
     
-# Liste des fichiers en sortie : 
+# Liste des indicateurs en sortie : 
     
     - IT_Equipment_unique_records : table avec les équipements unique
     - indicator_it_equipment_count_per_salle (http://127.0.0.1:8000/show_indicator_room/)
     - indicator_it_equipment_count_per_type_per_salle (http://127.0.0.1:8000/show_indicator_type_room/)
     - indicator_it_equipment_simulateur_espace (http://127.0.0.1:8000/show_simulateur_espace/)
+    - indicator_it_equipment_simulateur_espace (http://127.0.0.1:8000/show_simulateur_espace_mp/)
  
 
  Le fonctionnement des workflows est assurés par la présence de fichier dans ses 4 dossiers : 
@@ -46,6 +47,11 @@ Le dossier contient la présence de 4 workflows :
 >  cd Downloads/
 
 > python3 Update_simulateur_spatial.py
+
+6. Execution du script `Update_simulateur_spatial_with_master_plan_remove.py` afin de mettre à jour la simulation de l'espace en prenant en compte le master plan disponible dans les racks
+>  cd Downloads/
+
+> python3 Update_simulateur_spatial_with_master_plan_remove.py
 
 7. Execution du script `export_csv.py` permettant d'enregistrer au format csv n'importe quel table disponible dans la database :
 
@@ -166,16 +172,15 @@ Workflow permettant la mise à jour de la table `IT_equipments_unique_equipments
      - P4: nb d'equipement P4
 
 # 3/ Simulateur_espace.ipynb
-Ce workflow a pour but de simuler l'espace disponible sur chacun des racks afin de permettre une projection des équipes dans le déplacement du matériel.
 
-`indicator_it_equipment_simulateur_espace `: indicateur de l'espace disponible pour tous lers rack par rapport à la somme des hauteurs de chaque equipment renseigné sur la CMDB
+Ce workflow a pour but de simuler l'espace disponible sur chacun des racks afin de permettre une projection des équipes dans le déplacement du matériel. Deux variantes du workflow existent
+
+1. `indicator_it_equipment_simulateur_espace `: indicateur de l'espace disponible pour tous lers rack par rapport à la somme des hauteurs de chaque equipment renseigné sur la CMDB sans prendre en considération les futures équipements retirer 
 
 		- rack capacity : nombre de slot disponble par rack (par défaut 45)
 		- quantity slot occupied : nombre de slot utilisé
 		- quantity available occupied : nombre de slot disponible
 		- available slot : position des slots disponible
 
-
-
-
+2.  `indicator_it_equipment_simulateur_espace_mp` : permet quant à elle de simuler l'espace disponible en tenant compte des futurs équipements (de la salle P2 uniquement pour l'instant) sensés être retirer d'après le Master Plan.
 
