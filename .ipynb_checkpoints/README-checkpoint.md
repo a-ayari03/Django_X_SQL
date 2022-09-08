@@ -1,13 +1,14 @@
 
 
 
-MàJ 06/08/2022 
-Le dossier contient la présence de 4 workflows :
+MàJ 08/09/2022 
+Le dossier contient la présence de 5 workflows :
 
     1/ Olivier_it_Workflow.ipynb : mise à jour des tables relatifs à la CMDB, IT_equipments et Olivier_IT. Série de traitement permettant de déterminer les équipements bien localisés et ceux qui présentent des anomalies
     2/ Vision_spatial.ipynb  : Ajout des equipements manquants à Olivier_it
-    3/ Equipment_move_workflow.ipynb : mise à jour des equipments de la table IT_equipments. Taracking des déplacements d'équipements
-    4/ Simulateur_espace.ipynb : Simule l'espace disponible et identifie les slot vides sur chacun des racks afin de permettre une projection des équipes dans le déplacement du matériel.
+    3/ IT_Equipment_Workflow.ipynb : Ajout des equipements manquants à IT_equipemnts et série de traitement permettant de déterminer les équipements bien localisés et ceux qui présentent des anomalies
+    4/ Equipment_move_workflow.ipynb : mise à jour des equipments de la table IT_equipments. Taracking des déplacements d'équipements
+    5/ Simulateur_espace.ipynb : Simule l'espace disponible et identifie les slot vides sur chacun des racks afin de permettre une projection des équipes dans le déplacement du matériel.
     
 # Liste des indicateurs en sortie : 
     
@@ -15,7 +16,9 @@ Le dossier contient la présence de 4 workflows :
     - indicator_it_equipment_count_per_salle (http://127.0.0.1:8000/show_indicator_room/)
     - indicator_it_equipment_count_per_type_per_salle (http://127.0.0.1:8000/show_indicator_type_room/)
     - indicator_it_equipment_simulateur_espace (http://127.0.0.1:8000/show_simulateur_espace/)
-    - indicator_it_equipment_simulateur_espace (http://127.0.0.1:8000/show_simulateur_espace_mp/)
+    - indicator_it_equipment_simulateur_masterplan (http://127.0.0.1:8000/show_simulateur_espace_mp/)
+    - indicator_it_equipment_simulateur_avant_apres_masterplan (http://127.0.0.1:8000/show_simulateur_espace_before_after_mp/)
+    - IT_Equipment_x_olivier_it : Ajout des commentaires et attribues d'olivier_it sur 6sigma (workflow IT_Equipment_Workflow)
  
 
  Le fonctionnement des workflows est assurés par la présence de fichier dans ses 4 dossiers : 
@@ -35,25 +38,31 @@ Le dossier contient la présence de 4 workflows :
 
 > python3 Update_olivier_it.py
 
-3. Une fois la mise à jour effectuée, les fichiers csv seront transférés sous le dossier **Downloads/historique**. Un fichier exporté contenant tous les traitements sera crée sous le dossier **Downloads/resultat/année_mois_jour/**.
+3. Lancement du script `Update_IT_Equipment.py` afin de mettre à jour la base de données (6Sigma) et initialiser le workflow Olivier_it_Workflow.ipynb
 
-4. Lancement du script `Update_It_equipment_records.py` afin de mettre à jour la base de données IT_equipement et initialiser le workflow Equipment_move_workflow. Seul les fichiers csv contenus dans le dossier **Downloads/historique** serviront au fonctionnement du workflow.
+>  cd Downloads/
+
+> python3 Update_IT_Equipment.py
+
+4. Une fois la mise à jour effectuée, les fichiers csv seront transférés sous le dossier **Downloads/historique**. Un fichier exporté contenant tous les traitements sera crée sous le dossier **Downloads/resultat/année_mois_jour/**.
+
+5. Lancement du script `Update_It_equipment_records.py` afin de mettre à jour la base de données IT_equipement et initialiser le workflow Equipment_move_workflow. Seul les fichiers csv contenus dans le dossier **Downloads/historique** serviront au fonctionnement du workflow.
 	
 >  cd Downloads/
 
 > python3 Update_It_equipment_records.py
 
-5. Execution du script `Update_simulateur_spatial.py` afin de mettre à jour la simulation de l'espace disponible dans les racks
+6. Execution du script `Update_simulateur_spatial.py` afin de mettre à jour la simulation de l'espace disponible dans les racks
 >  cd Downloads/
 
 > python3 Update_simulateur_spatial.py
 
-6. Execution du script `Update_simulateur_spatial_with_master_plan_remove.py` afin de mettre à jour la simulation de l'espace en prenant en compte le master plan disponible dans les racks
+7. Execution du script `Update_simulateur_spatial_with_master_plan_remove.py` afin de mettre à jour la simulation de l'espace en prenant en compte le master plan disponible dans les racks
 >  cd Downloads/
 
 > python3 Update_simulateur_spatial_with_master_plan_remove.py
 
-7. Execution du script `export_csv.py` permettant d'enregistrer au format csv n'importe quel table disponible dans la database :
+8. Execution du script `export_csv.py` permettant d'enregistrer au format csv n'importe quel table disponible dans la database :
 
 > cd Downloads/
 
@@ -61,7 +70,7 @@ Le dossier contient la présence de 4 workflows :
 
 Un fichier exporté contenant tous les traitements sera crée sous le dossier **Downloads/resultat/année_mois_jour/<nom_de_la_table>**
 
-7. Lancement des scripts spécifiques (en cours de construction, non obligatoire) :
+9. Lancement des scripts spécifiques (en cours de construction, non obligatoire) :
     - Olivier_it_only_index_launcher.ipynb
     - Vision_spatial_launcher.ipynb
     
@@ -173,7 +182,7 @@ Workflow permettant la mise à jour de la table `IT_equipments_unique_equipments
 
 # 3/ Simulateur_espace.ipynb
 
-Ce workflow a pour but de simuler l'espace disponible sur chacun des racks afin de permettre une projection des équipes dans le déplacement du matériel. Deux variantes du workflow existent
+Ce workflow a pour but de simuler l'espace disponible sur chacun des racks afin de permettre une projection des équipes dans le déplacement du matériel. Deux variantes du workflow existent (Simulateur_espace_with_master_plan_remove.ipynb)
 
 1. `indicator_it_equipment_simulateur_espace `: indicateur de l'espace disponible pour tous lers rack par rapport à la somme des hauteurs de chaque equipment renseigné sur la CMDB sans prendre en considération les futures équipements retirer 
 
@@ -184,3 +193,67 @@ Ce workflow a pour but de simuler l'espace disponible sur chacun des racks afin 
 
 2.  `indicator_it_equipment_simulateur_espace_mp` : permet quant à elle de simuler l'espace disponible en tenant compte des futurs équipements (de la salle P2 uniquement pour l'instant) sensés être retirer d'après le Master Plan.
 
+
+# 4/ IT_Equipment_Workflow.ipynb
+
+Le workflow repose sur la mise à jour des fichiers csv IT_equipments (6SIGMA ), Assets_new (CMDB) ainsi que Olivier_it afin de constater les écarts entre les différentes base de données et de rajouter les équipements manquant de la CMDB à 6SIGMA 
+
+Une fois inséré, la description détaillée des traitements effectués est disponible sur le fichier IT_Equipment_Workflow.ipnyb (Jupyter Notebook).
+Plusieurs attributs sont ainsi générés : 
+
+- attribut `status_CMDB`: 
+	-  OK : asset id présent sur CMDB
+	- KO : Non présent
+
+- attribut `status_position_CMDB`: Salle + Rack + 1er slot de l'équipement
+	-  OK :Position présente sur CMDB
+	- KO : Non présent
+
+- attribut `Status` :
+    - Commun : Equipment present sur fichier Olivier_it & It_equipment
+    - Non trouvé : Equipment non present sur It_equipment
+    
+- attribut `status_asset_id` : 
+    - "Trouvé - bon asset id"
+    - "Non Trouvé - Mauvais Asset ID" impossibilité de trouver l'asset_id dans la CMDB (assets_filtrée)
+    
+- attribut `status_position` : 
+    - "Bonne localisation"
+    - "KO localisation" : impossibilité de trouver la position dans la CMDB (assets_filtrée)
+
+- attribut `status_nom_court` : Priorisation du status affiché 
+    
+    1. Présence d'asset d'id
+        1. "nom_court type OLD"
+        2. "nom_long type OLD" 
+        3. "OK nom_court"
+        4. "OK nom_long"
+        5. "Mauvais nom" : nom court/long non présent dans la cmdb
+    2. Non présence d'asset d'id
+        1. "nom_court type OLD"
+        2. "nom_long type OLD" 
+        3. "OK nom_court"
+        4. "OK nom_long"
+        5. "Mauvais nom" : nom court/long non présent dans la cmdb
+       
+- attribut `status_etat` : Si un équipment est repéré (par son asset_id et/ou sa position ) 
+    - "Trouvé - bon asset id"
+    - "Non Trouvé - Mauvais Asset ID"
+    - "KO Etat" - Aucun ou plusieurs equipments sur la même position, impossible d'établir le lien
+
+- attribut `status_spec` : attribut spécial dépendant de certains équipements
+    - "Patch Panel"
+    - "PCP"
+    
+- attribut `status_etat_hpe` : agrégation des status asset_id et de position
+
+    1- pas asset id & pas de localisation
+    2- pas asset id & localisation
+    3- assed id & localisation => status
+    4- asset id & pas localisation ==> "assetid"
+    5- PCP ==> "PCP"
+    6- Patch Panel => "Patch Panel"
+- attribut `status_status` : Agrégation de tous les attributs
+- attribut `status_CC` : Agrégation de tous les attributs avec mots clés
+
+#### -  `IT_Equipment_x_olivier_it` : Ajout des commentaires et attribues d'olivier_it sur 6sigma
