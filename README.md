@@ -40,7 +40,7 @@ Le dossier contient la présence de 5 workflows :
 
 > python3 Update_olivier_it.py
 
-3. Lancement du script `Update_IT_Equipment.py` afin de mettre à jour la base de données (6Sigma) et initialiser le workflow Olivier_it_Workflow.ipynb
+3. Lancement du script `Update_IT_Equipment.py` afin de mettre à jour la base de données (6Sigma) et initialiser le workflow IT_Equipment_Workflow.ipynb
 
 >  cd Downloads/
 
