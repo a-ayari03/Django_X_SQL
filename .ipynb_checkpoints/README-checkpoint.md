@@ -1,6 +1,7 @@
 
 
 
+
 MàJ 08/09/2022 
 Le dossier contient la présence de 5 workflows :
 
@@ -19,6 +20,7 @@ Le dossier contient la présence de 5 workflows :
     - indicator_it_equipment_simulateur_masterplan (http://127.0.0.1:8000/show_simulateur_espace_mp/)
     - indicator_it_equipment_simulateur_avant_apres_masterplan (http://127.0.0.1:8000/show_simulateur_espace_before_after_mp/)
     - IT_Equipment_x_olivier_it : Ajout des commentaires et attribues d'olivier_it sur 6sigma (workflow IT_Equipment_Workflow)
+    - 6SIGMA_report: Rapport servant aux équipes de 6SIGMA d'insérer leurs commentaires/analyses et d'éffectuer directement le traitement de 6sigma sur le meme rapport  
  
 
  Le fonctionnement des workflows est assurés par la présence de fichier dans ses 4 dossiers : 
@@ -46,29 +48,29 @@ Le dossier contient la présence de 5 workflows :
 
 4. Une fois la mise à jour effectuée, les fichiers csv seront transférés sous le dossier **Downloads/historique**. Un fichier exporté contenant tous les traitements sera crée sous le dossier **Downloads/resultat/année_mois_jour/**.
 
-5. Lancement du script `Update_IT_Equipment_report.py` : création d'un rapport au format olivier_it. Nécéssite la présence d'un fichier de la base 6SIGMA (IT_Equipment) ainsi que le dernier rapport en cours `6SIGMA_rapport`
-
->  cd Downloads/
-
-> python3 Update_IT_Equipment_report.py
-
 5. Lancement du script `Update_It_equipment_records.py` afin de mettre à jour la base de données IT_equipement et initialiser le workflow Equipment_move_workflow. Seul les fichiers csv contenus dans le dossier **Downloads/historique** serviront au fonctionnement du workflow.
 	
 >  cd Downloads/
 
 > python3 Update_It_equipment_records.py
+> 
+6. Lancement du script `Update_IT_Equipment_report.py` : création d'un rapport au format olivier_it. Nécessite la présence du dernier rapport en cours `6SIGMA_rapport` dans le dossier **Downloads/raw_file** pour fonctionner 
 
-6. Execution du script `Update_simulateur_spatial.py` afin de mettre à jour la simulation de l'espace disponible dans les racks
+>  cd Downloads/
+
+> python3 Update_IT_Equipment_report.py
+
+7. Execution du script `Update_simulateur_spatial.py` afin de mettre à jour la simulation de l'espace disponible dans les racks
 >  cd Downloads/
 
 > python3 Update_simulateur_spatial.py
 
-7. Execution du script `Update_simulateur_spatial_with_master_plan_remove.py` afin de mettre à jour la simulation de l'espace en prenant en compte le master plan disponible dans les racks
+8. Execution du script `Update_simulateur_spatial_with_master_plan_remove.py` afin de mettre à jour la simulation de l'espace en prenant en compte le master plan disponible dans les racks
 >  cd Downloads/
 
 > python3 Update_simulateur_spatial_with_master_plan_remove.py
 
-8. Execution du script `export_csv.py` permettant d'enregistrer au format csv n'importe quel table disponible dans la database :
+9. Execution du script `export_csv.py` permettant d'enregistrer au format csv n'importe quel table disponible dans la database :
 
 > cd Downloads/
 
@@ -76,7 +78,7 @@ Le dossier contient la présence de 5 workflows :
 
 Un fichier exporté contenant tous les traitements sera crée sous le dossier **Downloads/resultat/année_mois_jour/<nom_de_la_table>**
 
-9. Lancement des scripts spécifiques (en cours de construction, non obligatoire) :
+10. Lancement des scripts spécifiques (en cours de construction, non obligatoire) :
     - Olivier_it_only_index_launcher.ipynb
     - Vision_spatial_launcher.ipynb
     
