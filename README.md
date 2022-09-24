@@ -46,6 +46,12 @@ Le dossier contient la présence de 5 workflows :
 
 4. Une fois la mise à jour effectuée, les fichiers csv seront transférés sous le dossier **Downloads/historique**. Un fichier exporté contenant tous les traitements sera crée sous le dossier **Downloads/resultat/année_mois_jour/**.
 
+5. Lancement du script `Update_IT_Equipment_report.py` : création d'un rapport au format olivier_it. Nécéssite la présence d'un fichier de la base 6SIGMA (IT_Equipment) ainsi que le dernier rapport en cours `6SIGMA_rapport`
+
+>  cd Downloads/
+
+> python3 Update_IT_Equipment_report.py
+
 5. Lancement du script `Update_It_equipment_records.py` afin de mettre à jour la base de données IT_equipement et initialiser le workflow Equipment_move_workflow. Seul les fichiers csv contenus dans le dossier **Downloads/historique** serviront au fonctionnement du workflow.
 	
 >  cd Downloads/
