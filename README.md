@@ -2,7 +2,7 @@
 
 
 
-MàJ 29/09/2022 
+MàJ 05/10/2022 
 Le dossier contient la présence de 5 workflows :
 
     1/ Olivier_it_Workflow.ipynb : mise à jour des tables relatifs à la CMDB, IT_equipments et Olivier_IT. Série de traitement permettant de déterminer les équipements bien localisés et ceux qui présentent des anomalies
@@ -54,7 +54,7 @@ Le dossier contient la présence de 5 workflows :
 
 > python3 Update_It_equipment_records.py
 > 
-6. Lancement du script `Update_IT_Equipment_report.py` : création d'un rapport au format olivier_it. Nécessite la présence du dernier rapport en cours `6SIGMA_rapport` dans le dossier **Downloads/raw_file** pour fonctionner 
+6. Lancement du script `Update_IT_Equipment_report.py` : création d'un rapport au format olivier_it. Nécessite la présence du dernier rapport en cours `Claude_it` dans le dossier **Downloads/raw_file** pour fonctionner. Il est possible de rajouter des attributs/colonnes en modifiant le schema de creation de la table dans le fichier suivant /home/alexandre/Downloads/query_folder/olivier_it_2_sql_query.txt. Attention, l'ordre doit correspondre au rapport 6SIGMA généré par les query du workflow IT_Equipment
 
 >  cd Downloads/
 
@@ -82,7 +82,7 @@ Un fichier exporté contenant tous les traitements sera crée sous le dossier **
     - Olivier_it_only_index_launcher.ipynb
     - Vision_spatial_launcher.ipynb
     
-# 1/ Olivier_it_Workflow 
+# 1/ Olivier_it_Workflow (non requis)
 
 Le workflow repose sur la mise à jour des fichiers csv IT_equipments, Assets_new (CMDB) ainsi que Olivier_it afin de constater les écarts entre les différentes base de données.
 Le workflow est scindé en deux fichiers : Vision_spatial.ipynb ainsi que Olivier_it_Workflow.ipynb :
@@ -345,3 +345,5 @@ Les fichiers en sortie : **6SIGMA** et **CMDB** sont constitués des attribues s
 - attribut `date_clean` : 
 	- NULL : L'équipement est toujours présent dans la base 6SIGMA
 	- Si une date est affichée selon correspond à la date de nettoyage 
+
+### Un fichier : `CMDB_TO_FILTER.csv` est disponible dans le dossier ***Downloads/query_folder***  et permet de manuellement ajouter des modèles d'équipement à supprimer dans le rapport final CMDB
